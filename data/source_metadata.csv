@@ -1,0 +1,2 @@
+system:index,boundary_asset,export_crs,landsat_cloud_percent,landsat_date,landsat_product,lst_units,ndvi_method,ndvi_window_end_exclusive,ndvi_window_start,sentinel_candidate_dates,.geo
+0,projects/salzburg-heatwatch/assets/austria_municipalities_2025,EPSG:25833,2.88,2025-06-25,LC09_L2SP_192027_20250625_20250627_02_T1,degrees Celsius,Median of SCL-masked per-image NDVI,2025-07-03,2025-06-18,2025-06-21; 2025-06-23; 2025-06-26; 2025-07-01,"{""type"":""MultiPoint"",""coordinates"":[]}"

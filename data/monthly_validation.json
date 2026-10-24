@@ -1,0 +1,350 @@
+{
+  "2025-01": {
+    "all": {
+      "area_km2": 92.29100580282918,
+      "lst_valid_pct": 97.1066537074171,
+      "lst_mean": 1.1563507333096468,
+      "lst_candidate_days": 7,
+      "ndvi_valid_pct": 25.66872959191022,
+      "ndvi_mean": 0.40593105263610135,
+      "ndvi_candidate_days": 6
+    },
+    "Salzburg": {
+      "area_km2": 65.66527331355633,
+      "lst_valid_pct": 98.41823221284073,
+      "lst_mean": 1.2979685212950536,
+      "lst_candidate_days": 7,
+      "ndvi_valid_pct": 32.82394974813796,
+      "ndvi_mean": 0.4153908575582583,
+      "ndvi_candidate_days": 6
+    },
+    "Wals-Siezenheim": {
+      "area_km2": 26.625732489272867,
+      "lst_valid_pct": 93.8719948650537,
+      "lst_mean": 0.7901733546495474,
+      "lst_candidate_days": 7,
+      "ndvi_valid_pct": 8.02228597325453,
+      "ndvi_mean": 0.3104737689045537,
+      "ndvi_candidate_days": 6
+    }
+  },
+  "2025-02": {
+    "all": {
+      "area_km2": 92.29100580282918,
+      "lst_valid_pct": 1.661618925775648,
+      "lst_mean": -1.0371297109826112,
+      "lst_candidate_days": 7,
+      "ndvi_valid_pct": 0.13234614386037263,
+      "ndvi_mean": 0.5309512141257402,
+      "ndvi_candidate_days": 10
+    },
+    "Salzburg": {
+      "area_km2": 65.66527331355633,
+      "lst_valid_pct": 2.3353665367169363,
+      "lst_mean": -1.0371297109826112,
+      "lst_candidate_days": 7,
+      "ndvi_valid_pct": 0.18342052234347747,
+      "ndvi_mean": 0.5353002025062122,
+      "ndvi_candidate_days": 10
+    },
+    "Wals-Siezenheim": {
+      "area_km2": 26.625732489272867,
+      "lst_valid_pct": 0.0,
+      "lst_mean": null,
+      "lst_candidate_days": 7,
+      "ndvi_valid_pct": 0.006384800871431072,
+      "ndvi_mean": 0.22282900135306752,
+      "ndvi_candidate_days": 10
+    }
+  },
+  "2025-03": {
+    "all": {
+      "area_km2": 92.29100580282918,
+      "lst_valid_pct": 99.91306883939095,
+      "lst_mean": 14.215084895707914,
+      "lst_candidate_days": 5,
+      "ndvi_valid_pct": 99.04357814314473,
+      "ndvi_mean": 0.4664696996183321,
+      "ndvi_candidate_days": 12
+    },
+    "Salzburg": {
+      "area_km2": 65.66527331355633,
+      "lst_valid_pct": 99.98116679911834,
+      "lst_mean": 14.605620972413403,
+      "lst_candidate_days": 5,
+      "ndvi_valid_pct": 98.65582862637434,
+      "ndvi_mean": 0.4542393896262306,
+      "ndvi_candidate_days": 12
+    },
+    "Wals-Siezenheim": {
+      "area_km2": 26.625732489272867,
+      "lst_valid_pct": 99.74512337011988,
+      "lst_mean": 13.249652472988867,
+      "lst_candidate_days": 5,
+      "ndvi_valid_pct": 99.99985898935932,
+      "ndvi_mean": 0.49622710201988185,
+      "ndvi_candidate_days": 12
+    }
+  },
+  "2025-04": {
+    "all": {
+      "area_km2": 92.29100580282918,
+      "lst_valid_pct": 96.51152124902839,
+      "lst_mean": 17.710584890657024,
+      "lst_candidate_days": 7,
+      "ndvi_valid_pct": 98.29367665433836,
+      "ndvi_mean": 0.5307588964100244,
+      "ndvi_candidate_days": 14
+    },
+    "Salzburg": {
+      "area_km2": 65.66527331355633,
+      "lst_valid_pct": 97.85605871946792,
+      "lst_mean": 17.284704334978855,
+      "lst_candidate_days": 7,
+      "ndvi_valid_pct": 97.99734028977532,
+      "ndvi_mean": 0.5212780840952517,
+      "ndvi_candidate_days": 14
+    },
+    "Wals-Siezenheim": {
+      "area_km2": 26.625732489272867,
+      "lst_valid_pct": 93.195577903158,
+      "lst_mean": 18.813429737535134,
+      "lst_candidate_days": 7,
+      "ndvi_valid_pct": 99.0245113226283,
+      "ndvi_mean": 0.5538982553048888,
+      "ndvi_candidate_days": 14
+    }
+  },
+  "2025-05": {
+    "all": {
+      "area_km2": 92.29100580282918,
+      "lst_valid_pct": 12.46389457817482,
+      "lst_mean": 24.982831459569177,
+      "lst_candidate_days": 4,
+      "ndvi_valid_pct": 99.52107768808382,
+      "ndvi_mean": 0.6210662984202897,
+      "ndvi_candidate_days": 16
+    },
+    "Salzburg": {
+      "area_km2": 65.66527331355633,
+      "lst_valid_pct": 14.974457244234824,
+      "lst_mean": 25.00393863095358,
+      "lst_candidate_days": 4,
+      "ndvi_valid_pct": 99.50490779031456,
+      "ndvi_mean": 0.6147588432028713,
+      "ndvi_candidate_days": 16
+    },
+    "Wals-Siezenheim": {
+      "area_km2": 26.625732489272867,
+      "lst_valid_pct": 6.272260837992852,
+      "lst_mean": 24.85855433166155,
+      "lst_candidate_days": 4,
+      "ndvi_valid_pct": 99.56095643158494,
+      "ndvi_mean": 0.6366131985679228,
+      "ndvi_candidate_days": 16
+    }
+  },
+  "2025-06": {
+    "all": {
+      "area_km2": 92.29100580282918,
+      "lst_valid_pct": 99.98577021268996,
+      "lst_mean": 29.976751623984175,
+      "lst_candidate_days": 8,
+      "ndvi_valid_pct": 99.76201052372699,
+      "ndvi_mean": 0.6145817200722579,
+      "ndvi_candidate_days": 12
+    },
+    "Salzburg": {
+      "area_km2": 65.66527331355633,
+      "lst_valid_pct": 99.99369324372768,
+      "lst_mean": 30.608002127521203,
+      "lst_candidate_days": 8,
+      "ndvi_valid_pct": 99.8330424112914,
+      "ndvi_mean": 0.6056165292367548,
+      "ndvi_candidate_days": 12
+    },
+    "Wals-Siezenheim": {
+      "area_km2": 26.625732489272867,
+      "lst_valid_pct": 99.96623016815688,
+      "lst_mean": 28.419512795310947,
+      "lst_candidate_days": 8,
+      "ndvi_valid_pct": 99.58682930335017,
+      "ndvi_mean": 0.6367466382062833,
+      "ndvi_candidate_days": 12
+    }
+  },
+  "2025-07": {
+    "all": {
+      "area_km2": 92.29100580282918,
+      "lst_valid_pct": 84.89530560778316,
+      "lst_mean": 32.738207005216964,
+      "lst_candidate_days": 8,
+      "ndvi_valid_pct": 99.609972614371,
+      "ndvi_mean": 0.616939549680081,
+      "ndvi_candidate_days": 16
+    },
+    "Salzburg": {
+      "area_km2": 65.66527331355633,
+      "lst_valid_pct": 97.43798272910664,
+      "lst_mean": 32.9770809270629,
+      "lst_candidate_days": 8,
+      "ndvi_valid_pct": 99.58209658744593,
+      "ndvi_mean": 0.6053725615145389,
+      "ndvi_candidate_days": 16
+    },
+    "Wals-Siezenheim": {
+      "area_km2": 26.625732489272867,
+      "lst_valid_pct": 53.96213516497104,
+      "lst_mean": 31.67445083909651,
+      "lst_candidate_days": 8,
+      "ndvi_valid_pct": 99.67872140570157,
+      "ndvi_mean": 0.6454387904367187,
+      "ndvi_candidate_days": 16
+    }
+  },
+  "2025-08": {
+    "all": {
+      "area_km2": 92.29100580282918,
+      "lst_valid_pct": 99.98253875359119,
+      "lst_mean": 31.095448764001322,
+      "lst_candidate_days": 7,
+      "ndvi_valid_pct": 99.44458226171216,
+      "ndvi_mean": 0.6225888174244149,
+      "ndvi_candidate_days": 12
+    },
+    "Salzburg": {
+      "area_km2": 65.66527331355633,
+      "lst_valid_pct": 99.99593492459219,
+      "lst_mean": 31.249272879827796,
+      "lst_candidate_days": 7,
+      "ndvi_valid_pct": 99.36812579923739,
+      "ndvi_mean": 0.6096077077098749,
+      "ndvi_candidate_days": 12
+    },
+    "Wals-Siezenheim": {
+      "area_km2": 26.625732489272867,
+      "lst_valid_pct": 99.94950066795388,
+      "lst_mean": 30.715906332226766,
+      "lst_candidate_days": 7,
+      "ndvi_valid_pct": 99.63314175043286,
+      "ndvi_mean": 0.6545181092203843,
+      "ndvi_candidate_days": 12
+    }
+  },
+  "2025-09": {
+    "all": {
+      "area_km2": 92.29100580282918,
+      "lst_valid_pct": 99.54579006420668,
+      "lst_mean": 23.503011489854536,
+      "lst_candidate_days": 8,
+      "ndvi_valid_pct": 99.6937043444606,
+      "ndvi_mean": 0.6506744133859962,
+      "ndvi_candidate_days": 13
+    },
+    "Salzburg": {
+      "area_km2": 65.66527331355633,
+      "lst_valid_pct": 99.98367108375514,
+      "lst_mean": 23.620223565320128,
+      "lst_candidate_days": 8,
+      "ndvi_valid_pct": 99.56956579657856,
+      "ndvi_mean": 0.6362908468121411,
+      "ndvi_candidate_days": 13
+    },
+    "Wals-Siezenheim": {
+      "area_km2": 26.625732489272867,
+      "lst_valid_pct": 98.4658732266491,
+      "lst_mean": 23.209483250307663,
+      "lst_candidate_days": 8,
+      "ndvi_valid_pct": 99.99985898935932,
+      "ndvi_mean": 0.6859950079335991,
+      "ndvi_candidate_days": 13
+    }
+  },
+  "2025-10": {
+    "all": {
+      "area_km2": 92.29100580282918,
+      "lst_valid_pct": 57.67962142888477,
+      "lst_mean": 12.273275815407622,
+      "lst_candidate_days": 6,
+      "ndvi_valid_pct": 96.5948381353682,
+      "ndvi_mean": 0.590574304546116,
+      "ndvi_candidate_days": 15
+    },
+    "Salzburg": {
+      "area_km2": 65.66527331355633,
+      "lst_valid_pct": 60.5937935750529,
+      "lst_mean": 12.14898895028142,
+      "lst_candidate_days": 6,
+      "ndvi_valid_pct": 95.26624192854564,
+      "ndvi_mean": 0.5723688076002262,
+      "ndvi_candidate_days": 15
+    },
+    "Wals-Siezenheim": {
+      "area_km2": 26.625732489272867,
+      "lst_valid_pct": 50.492592469663435,
+      "lst_mean": 12.641116616299083,
+      "lst_candidate_days": 6,
+      "ndvi_valid_pct": 99.87146660294208,
+      "ndvi_mean": 0.6334029496948616,
+      "ndvi_candidate_days": 15
+    }
+  },
+  "2025-11": {
+    "all": {
+      "area_km2": 92.29100580282918,
+      "lst_valid_pct": 0.6581486651561991,
+      "lst_mean": 4.4714523253420815,
+      "lst_candidate_days": 5,
+      "ndvi_valid_pct": 94.7608806956527,
+      "ndvi_mean": 0.5178995345479723,
+      "ndvi_candidate_days": 11
+    },
+    "Salzburg": {
+      "area_km2": 65.66527331355633,
+      "lst_valid_pct": 0.8973632976772028,
+      "lst_mean": 4.512488385122934,
+      "lst_candidate_days": 5,
+      "ndvi_valid_pct": 94.31287588025675,
+      "ndvi_mean": 0.5084991278131609,
+      "ndvi_candidate_days": 11
+    },
+    "Wals-Siezenheim": {
+      "area_km2": 26.625732489272867,
+      "lst_valid_pct": 0.06818952576267334,
+      "lst_mean": 3.1396171574256746,
+      "lst_candidate_days": 5,
+      "ndvi_valid_pct": 95.86576517763325,
+      "ndvi_mean": 0.5407075911371485,
+      "ndvi_candidate_days": 11
+    }
+  },
+  "2025-12": {
+    "all": {
+      "area_km2": 92.29100580282918,
+      "lst_valid_pct": 99.65671231970391,
+      "lst_mean": 3.729619314586591,
+      "lst_candidate_days": 8,
+      "ndvi_valid_pct": 91.67374286973559,
+      "ndvi_mean": 0.4900385250841035,
+      "ndvi_candidate_days": 12
+    },
+    "Salzburg": {
+      "area_km2": 65.66527331355633,
+      "lst_valid_pct": 99.60613436633648,
+      "lst_mean": 4.049963077738294,
+      "lst_candidate_days": 8,
+      "ndvi_valid_pct": 91.29086798411782,
+      "ndvi_mean": 0.48433320822219955,
+      "ndvi_candidate_days": 12
+    },
+    "Wals-Siezenheim": {
+      "area_km2": 26.625732489272867,
+      "lst_valid_pct": 99.78144936244439,
+      "lst_mean": 2.9409648924570213,
+      "lst_candidate_days": 8,
+      "ndvi_valid_pct": 92.61800173732222,
+      "ndvi_mean": 0.5039075488003715,
+      "ndvi_candidate_days": 12
+    }
+  }
+}

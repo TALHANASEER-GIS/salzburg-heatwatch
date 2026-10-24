@@ -1,0 +1,20 @@
+[
+  {
+    "municipality": "Salzburg",
+    "area_km2": 65.6652733135565,
+    "grid_parts": 6858,
+    "lst_mean": 35.96637663116977,
+    "lst_valid_pct": 99.93630128433047,
+    "ndvi_mean": 0.6067301328673677,
+    "ndvi_valid_pct": 99.82550141628467
+  },
+  {
+    "municipality": "Wals-Siezenheim",
+    "area_km2": 26.62573249317955,
+    "grid_parts": 2851,
+    "lst_mean": 34.690856302715304,
+    "lst_valid_pct": 99.94148741047563,
+    "ndvi_mean": 0.6403385193023083,
+    "ndvi_valid_pct": 99.80069399524547
+  }
+]
