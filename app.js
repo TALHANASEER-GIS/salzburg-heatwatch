@@ -1,7 +1,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const state={indicator:'lst',municipality:'all',coverage:.8,opacity:.85,month:'2025-06',features:[],baseFeatures:[],filtered:[],selected:null,manifest:null,monthCache:new Map(),monthRequest:0};
-const scales={lst:{key:'lst_mean_c',coverage:'lst_valid_fraction',title:'Surface temperature',unit:'°C',min:-10,max:50,ticks:[-10,10,30,50],colors:['#313695','#74add1','#ffffbf','#f46d43','#a50026']},ndvi:{key:'ndvi_mean',coverage:'ndvi_valid_fraction',title:'Vegetation NDVI',unit:'',min:-.2,max:.8,ticks:[-.2,0,.4,.8],colors:['#2166ac','#d8b365','#f5f5c4','#a6d96a','#006837']}};
+const scales={lst:{key:'lst_mean_c',coverage:'lst_valid_fraction',title:'Surface temperature',unit:'°C',min:-10,max:50,ticks:[-10,10,30,50],colors:['#4575b4','#fff5c4','#fec44f','#f46d43','#a50026']},ndvi:{key:'ndvi_mean',coverage:'ndvi_valid_fraction',title:'Vegetation NDVI',unit:'',min:-.2,max:.8,ticks:[-.2,0,.4,.8],colors:['#2166ac','#d8b365','#f5f5c4','#a6d96a','#006837']}};
 let map,base,grid,boundaries,highlight,scatterPoints=[];
 const finite=v=>typeof v==='number'&&Number.isFinite(v);
 const fmt=(v,n=1)=>finite(v)?v.toLocaleString('en-GB',{minimumFractionDigits:n,maximumFractionDigits:n}):'No data';
@@ -44,6 +44,9 @@ function style(f){return {fillColor:color(f.properties[scales[state.indicator].k
 function fit(){if(!boundaries)return;const fs=boundaries.toGeoJSON().features.filter(f=>state.municipality==='all'||f.properties.g_name===state.municipality);if(fs.length){const b=L.geoJSON(fs).getBounds();map.fitBounds(b,{padding:[20,20]});}}
 function update(){
   const s=scales[state.indicator];
+  document.body.dataset.indicator=state.indicator;
+  $('heatSummary').classList.toggle('selected-indicator',state.indicator==='lst');
+  $('vegetationSummary').classList.toggle('selected-indicator',state.indicator==='ndvi');
   state.filtered=state.features.filter(f=>{const p=f.properties;return(state.municipality==='all'||p.municipality===state.municipality)&&p[s.coverage]>=state.coverage;});
   if(state.selected&&!state.filtered.some(f=>f.properties.cell_id===state.selected.properties.cell_id))clearSelection();
   if(grid)map.removeLayer(grid);
@@ -116,8 +119,9 @@ function drawSeason(){
   let path='',connected=false;
   const points=months.map((m,i)=>{const summary=m.summary[state.municipality],coverage=summary[state.indicator+'_valid_pct'],value=summary[state.indicator+'_mean'];return {m,x:left+i*(right-left)/11,y:bottom-(value-lo)/(hi-lo)*(bottom-top),value,coverage,good:coverage>=50&&finite(value)};});
   for(const p of points){if(p.good){path+=(connected?'L':'M')+p.x+','+p.y+' ';connected=true;}else connected=false;}
-  markup+=`<path d="${path}" fill="none" stroke="#34775d" stroke-width="2.5"/>`;
-  for(const p of points){const selected=p.m.id===state.month;if(p.good)markup+=`<circle cx="${p.x}" cy="${p.y}" r="${selected?6:4}" fill="${selected?'#da713e':'#34775d'}" stroke="white" stroke-width="2"><title>${p.m.label}: ${fmt(p.value,state.indicator==='lst'?1:3)} ${s.unit}; ${fmt(p.coverage,1)}% coverage</title></circle>`;else markup+=`<circle cx="${p.x}" cy="${bottom}" r="5" fill="white" stroke="#c28b4d" stroke-width="2"><title>${p.m.label}: insufficient coverage (${fmt(p.coverage,2)}%)</title></circle>`;}
+  const trendColor=state.indicator==='lst'?'#b64b28':'#21644d';
+  markup+=`<path d="${path}" fill="none" stroke="${trendColor}" stroke-width="2.5"/>`;
+  for(const p of points){const selected=p.m.id===state.month;if(p.good)markup+=`<circle cx="${p.x}" cy="${p.y}" r="${selected?6:4}" fill="${selected?'#e69b3e':trendColor}" stroke="white" stroke-width="2"><title>${p.m.label}: ${fmt(p.value,state.indicator==='lst'?1:3)} ${s.unit}; ${fmt(p.coverage,1)}% coverage</title></circle>`;else markup+=`<circle cx="${p.x}" cy="${bottom}" r="5" fill="white" stroke="#c28b4d" stroke-width="2"><title>${p.m.label}: insufficient coverage (${fmt(p.coverage,2)}%)</title></circle>`;}
   $('seasonChart').innerHTML=markup;
   $('monthButtons').replaceChildren(...points.map(p=>{const b=document.createElement('button');b.textContent=p.m.label.slice(0,3);b.className=(p.m.id===state.month?'selected ':'')+(!p.good?'low':'');b.setAttribute('aria-pressed',p.m.id===state.month);b.title=p.m.label+' · '+fmt(p.coverage,2)+'% valid '+(state.indicator==='lst'?'temperature':'NDVI')+' coverage';b.onclick=()=>loadMonth(p.m.id);return b;}));
 }
@@ -143,6 +147,22 @@ function downloadCSV(){
   const csv=[keys.join(','),...state.filtered.map(f=>keys.map(k=>escape(f.properties[k])).join(','))].join('\r\n');
   const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'})),a=document.createElement('a');a.href=url;a.download=`heatwatch_${state.month}_${state.municipality==='all'?'both':state.municipality}_${state.indicator}_coverage${state.coverage}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
+function setBasemap(showStreet){
+  if(showStreet&&!map.hasLayer(base))base.addTo(map);
+  if(!showStreet&&map.hasLayer(base))map.removeLayer(base);
+  $('streetMap').classList.toggle('selected',showStreet);
+  $('analysisMap').classList.toggle('selected',!showStreet);
+  $('streetMap').setAttribute('aria-pressed',showStreet);
+  $('analysisMap').setAttribute('aria-pressed',!showStreet);
+}
+async function resetDashboard(){
+  state.municipality='all';state.coverage=.8;state.indicator='lst';state.opacity=.85;
+  $('municipality').value='all';$('coverage').value='0.8';$('opacity').value=85;$('opacityValue').textContent='85%';
+  setBasemap(true);$('cellSearch').value='';$('cellSearch').removeAttribute('aria-invalid');$('searchStatus').textContent='';
+  clearSelection();await loadMonth('2025-06');fit();
+}
+function openHelp(){if(!$('helpDialog').open)$('helpDialog').showModal();}
+function rememberHelp(){try{localStorage.setItem('heatwatch-guide-v1','seen');}catch(error){/* Help remains usable when storage is unavailable. */}}
 async function init(){
   try{
     if(!window.L)throw new Error('The map library could not load. Please reload the page.');
@@ -164,16 +184,24 @@ async function init(){
     $('temperature').onclick=()=>{state.indicator='lst';update();};
     $('vegetation').onclick=()=>{state.indicator='ndvi';update();};
     $('opacity').oninput=e=>{state.opacity=Number(e.target.value)/100;$('opacityValue').textContent=e.target.value+'%';grid.setStyle(style);};
-    $('basemap').onchange=e=>e.target.checked?base.addTo(map):map.removeLayer(base);
+    $('streetMap').onclick=()=>setBasemap(true);
+    $('analysisMap').onclick=()=>setBasemap(false);
     $('fitMap').onclick=fit;
-    $('reset').onclick=async()=>{state.municipality='all';state.coverage=.8;state.indicator='lst';state.opacity=.85;$('municipality').value='all';$('coverage').value='0.8';$('opacity').value=85;$('opacityValue').textContent='85%';$('basemap').checked=true;if(!map.hasLayer(base))base.addTo(map);$('cellSearch').value='';$('searchStatus').textContent='';clearSelection();await loadMonth('2025-06');fit();};
+    $('reset').onclick=resetDashboard;
+    $('homeButton').onclick=resetDashboard;
     $('clearSelection').onclick=clearSelection;
-    $('searchForm').onsubmit=e=>{e.preventDefault();const id=$('cellSearch').value.trim(),f=state.filtered.find(f=>f.properties.cell_id===id);if(f){$('searchStatus').textContent='Cell found in current filters.';selectCell(f,true);}else $('searchStatus').textContent='Cell not found in current filters. Paste a full cell ID from the downloaded CSV.';};
+    $('searchForm').onsubmit=e=>{e.preventDefault();const id=$('cellSearch').value.trim();if(!/^\d{5}_\d+_\d+$/.test(id)){$('cellSearch').setAttribute('aria-invalid','true');$('searchStatus').textContent='Use the full cell_id from the CSV, such as 50338_344700_5292700, rather than a row number. You can also click the map without an ID.';return;}const f=state.filtered.find(f=>f.properties.cell_id===id);if(f){$('cellSearch').removeAttribute('aria-invalid');$('searchStatus').textContent='Cell found in current filters.';selectCell(f,true);}else{$('cellSearch').setAttribute('aria-invalid','true');$('searchStatus').textContent='This cell is not in the current filters. Check the month, municipality and minimum coverage, or download a fresh filtered CSV.';}};
     $('scatter').onclick=e=>{const r=e.currentTarget.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;let nearest=null,d=144;for(const p of scatterPoints){const n=(p.x-x)**2+(p.y-y)**2;if(n<d){d=n;nearest=p;}}if(nearest)selectCell(nearest.f,true);};
     $('download').onclick=downloadCSV;
     new ResizeObserver(()=>{map.invalidateSize();drawScatter();}).observe($('map'));
     window.addEventListener('resize',drawScatter);
+    try{if(localStorage.getItem('heatwatch-guide-v1')!=='seen')openHelp();}catch(error){openHelp();}
   }catch(error){$('loading').hidden=true;$('error').hidden=false;$('error').textContent=error.message+' Your original exports have not been changed.';console.error(error);}
 }
 const openMethods=()=> $('methods').showModal();$('methodsButton').onclick=openMethods;$('learnButton').onclick=openMethods;$('closeMethods').onclick=()=>$('methods').close();$('methods').addEventListener('click',e=>{if(e.target===$('methods')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
+$('helpMethods').onclick=()=>{$('helpDialog').close();openMethods();};
+$('helpButton').onclick=openHelp;$('footerHelp').onclick=openHelp;
+$('closeHelp').onclick=()=>$('helpDialog').close();
+$('startExploring').onclick=()=>$('helpDialog').close();
+$('helpDialog').addEventListener('close',rememberHelp);
 init();
